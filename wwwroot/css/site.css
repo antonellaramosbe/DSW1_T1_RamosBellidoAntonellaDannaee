@@ -1,0 +1,94 @@
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin: 0;
+    margin-bottom: 60px;
+    background-color: #f4f8f5;
+    color: #263b30;
+}
+
+/* Barra de navegación */
+.navbar-biblioteca {
+    background-color: #609477;
+}
+
+    .navbar-biblioteca .navbar-brand {
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    .navbar-biblioteca .nav-link {
+        color: white;
+        padding: 0.7rem 1rem;
+    }
+
+        .navbar-biblioteca .nav-link:hover {
+            color: #e0f0e5;
+        }
+
+/* Botones */
+.btn-primary {
+    background-color: #609477;
+    border-color: #609477;
+}
+
+    .btn-primary:hover {
+        background-color: #4d7d63;
+        border-color: #4d7d63;
+    }
+
+.btn-outline-secondary {
+    color: #527761;
+    border-color: #8aaa96;
+}
+
+    .btn-outline-secondary:hover {
+        background-color: #e2eee6;
+        color: #365c45;
+        border-color: #8aaa96;
+    }
+
+/* Campos de formulario */
+.form-control:focus,
+.form-check-input:focus {
+    border-color: #80ae91;
+    box-shadow: 0 0 0 0.2rem rgba(96, 148, 119, 0.2);
+}
+
+/* Tarjetas */
+.card {
+    border: 1px solid #e1ebe4;
+    border-radius: 10px;
+}
+
+/* Tablas */
+.table thead.table-dark th {
+    background-color: #dcebe1;
+    color: #294b37;
+    border-color: #c7ddce;
+}
+
+/* Mensajes */
+.alert-info {
+    background-color: #e5f1e8;
+    border-color: #c9dfd0;
+    color: #315e40;
+}
+
+/* Pie de página */
+.footer-biblioteca {
+    background-color: #e8f0eb;
+    color: #617568;
+    border-top: 1px solid #d9e5dc;
+}

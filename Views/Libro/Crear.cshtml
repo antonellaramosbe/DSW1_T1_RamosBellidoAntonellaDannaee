@@ -1,0 +1,85 @@
+﻿@model DSW1_T1_RamosBellidoAntonellaDannaee.Models.Libro
+
+@{
+    ViewData["Title"] = "Registrar libro";
+}
+
+<div class="container mt-3">
+    <div class="mb-4">
+        <h2 class="fw-bold mb-1">Registrar libro</h2>
+        <p class="text-muted mb-0">Complete los datos para registrar un nuevo libro.</p>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <div class="row">
+                <div class="col-md-7 col-lg-6">
+                    @using (Html.BeginForm("Crear", "Libro", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.NombreLibro, "Nombre del libro",
+                                new { @class = "form-label fw-semibold" })
+
+                            @Html.EditorFor(model => model.NombreLibro,
+                                new { htmlAttributes = new {
+                                    @class = "form-control",
+                                    placeholder = "Ingrese el nombre del libro"
+                                } })
+
+                            @Html.ValidationMessageFor(model => model.NombreLibro, "",
+                                new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Autor,
+                                new { @class = "form-label fw-semibold" })
+
+                            @Html.EditorFor(model => model.Autor,
+                                new { htmlAttributes = new {
+                                    @class = "form-control",
+                                    placeholder = "Ingrese el nombre del autor"
+                                } })
+
+                            @Html.ValidationMessageFor(model => model.Autor, "",
+                                new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.NombreEditorial, "Editorial",
+                                new { @class = "form-label fw-semibold" })
+
+                            @Html.EditorFor(model => model.NombreEditorial,
+                                new { htmlAttributes = new {
+                                    @class = "form-control",
+                                    placeholder = "Ingrese la editorial"
+                                } })
+
+                            @Html.ValidationMessageFor(model => model.NombreEditorial, "",
+                                new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                Registrar libro
+                            </button>
+
+                            <a asp-action="Index" class="btn btn-outline-secondary ms-1">
+                                Volver a la lista
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

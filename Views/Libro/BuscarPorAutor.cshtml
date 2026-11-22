@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DSW1_T1_RamosBellidoAntonellaDannaee.Models.Libro>
+
+@{
+    ViewData["Title"] = "Buscar libros por autor";
+}
+
+<div class="container mt-3">
+    <div class="mb-4">
+        <h2 class="fw-bold mb-1">Buscar libros por autor</h2>
+        <p class="text-muted mb-0">Ingrese el nombre del autor para encontrar sus libros.</p>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body p-4">
+            @using (Html.BeginForm("BuscarPorAutor", "Libro", FormMethod.Get))
+            {
+                <div class="row align-items-end">
+                    <div class="col-md-6">
+                        <div class="mb-3 mb-md-0">
+                            @Html.Label("autor", "Nombre del autor",
+                                new { @class = "form-label fw-semibold" })
+
+                            @Html.TextBox("autor", ViewBag.Autor as string,
+                                new
+                                {
+                                    @class = "form-control",
+                                    placeholder = "Ingrese el nombre del autor"
+                                })
+                        </div>
+                    </div>
+
+                    <div class="col-md-auto mt-3 mt-md-0">
+                        <button type="submit" class="btn btn-primary">
+                            Buscar
+                        </button>
+
+                        <a asp-action="Index" class="btn btn-outline-secondary ms-1">
+                            Volver a la lista
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <h5 class="fw-semibold mb-3">Resultados de búsqueda</h5>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre del libro</th>
+                            <th>Autor</th>
+                            <th>Editorial</th>
+                            <th>ISDN</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td class="fw-semibold">@item.NombreLibro</td>
+                                    <td>@item.Autor</td>
+                                    <td>@item.NombreEditorial</td>
+                                    <td>@item.ISDN</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    No se encontraron libros para el autor ingresado.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
